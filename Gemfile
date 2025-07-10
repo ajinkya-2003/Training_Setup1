@@ -52,6 +52,8 @@ group :development, :test do
 
   gem "dotenv-rails"
 
+  gem "rubocop", require: false
+
 end
 
 group :development do
@@ -66,3 +68,5 @@ group :test do
 end
 gem 'haml-rails'
 gem 'pg'
+
+gem 'devise'
