@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   # Add this line to configure Devise strong parameters
   before_action :configure_permitted_parameters, if: :devise_controller?
+  layout :set_layout
 
   protected
 
@@ -14,5 +15,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :age, :date_of_birth, :phone])
     # For account updates (if you have an edit profile page)
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :age, :date_of_birth, :phone])
+  end
+
+  def set_layout
+    devise_controller? ? 'devise' : 'application'
   end
 end

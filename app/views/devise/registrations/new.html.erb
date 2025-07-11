@@ -1,44 +1,76 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+<div class="auth-container">
+  <div class="auth-background">
+    <div class="auth-blob auth-blob-1"></div>
+    <div class="auth-blob auth-blob-2"></div>
   </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+  <div class="auth-logo">
+    <img src="/assets/auth-logo.svg" alt="Logo" onerror="this.src='/assets/auth-bg.svg'; this.style.height='40px'; this.style.width='40px';">
   </div>
 
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_field :date_of_birth %>
-  </div>
+  <h2>Sign up</h2>
+  <p class="auth-subtitle">Create an account to get started with our platform.</p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :first_name %>
+      <div class="field-group">
+        <i class="field-icon fas fa-user"></i>
+        <%= f.text_field :first_name, autofocus: true, placeholder: "Enter your first name" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :last_name %>
+      <div class="field-group">
+        <i class="field-icon fas fa-user"></i>
+        <%= f.text_field :last_name, placeholder: "Enter your last name" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :date_of_birth %>
+      <div class="field-group">
+        <i class="field-icon fas fa-calendar"></i>
+        <%= f.date_field :date_of_birth %>
+      </div>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="field">
+      <%= f.label :email %>
+      <div class="field-group">
+        <i class="field-icon fas fa-envelope"></i>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "Enter your email address" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <span style="font-size: 0.8rem; color: var(--muted);">(<%= @minimum_password_length %> characters minimum)</span>
+      <% end %>
+      <div class="field-group">
+        <i class="field-icon fas fa-lock"></i>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Create a password" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <div class="field-group">
+        <i class="field-icon fas fa-lock"></i>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm your password" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <div class="devise-links">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
