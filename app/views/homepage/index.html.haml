@@ -1,6 +1,10 @@
-/ app/views/homepage/index.html.haml
 %div.container.mt-5.text-center
   %h1.display-4.text-dark Welcome to Heyy!
+
   %div.mt-4
-    = link_to 'Register', '#', class: 'btn btn-primary me-3'
-    = link_to 'Login', '#', class: 'btn btn-secondary'
+    - if user_signed_in?
+      %p.mb-3.text-success Logged in as #{current_user.email}
+      = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+    - else
+      = link_to 'Register', new_user_registration_path, class: 'btn btn-primary me-3'
+      = link_to 'Login', new_user_session_path, class: 'btn btn-secondary'
