@@ -14,9 +14,8 @@ module Build
     def create_users
       puts 'Creating users...'
       10.times do
-        # Generate a date of birth for a person who is between 18 and 80 years old
         dob = Faker::Date.birthday(min_age: 18, max_age: 80)
-        # Calculate the age based on the date of birth
+
         age = ((Date.today - dob) / 365.25).floor
 
         User.create!(
@@ -34,7 +33,7 @@ module Build
     end
 
     def execute
-      # Execute seeding methods in order
+
       reset_data
       create_users
     end
